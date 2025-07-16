@@ -6,7 +6,8 @@
 A Data Science project to predict **house rental prices** based on multiple features such as size, city, furnishing status, and more. This project involves **data preprocessing**, **exploratory data analysis (EDA)**, and **model building** using **Linear Regression** and **Random Forest Regressor** in Python.
 
 
-Live : https://colab.research.google.com/drive/15aoRSXB3AYjiAltyMKnInEmvF6sRA2OX#scrollTo=2da2646f
+Live : [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/15aoRSXB3AYjiAltyMKnInEmvF6sRA2OX)
+
 ---
 
 ## 📌 Project Objectives
