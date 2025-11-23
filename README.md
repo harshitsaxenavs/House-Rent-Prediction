@@ -1,6 +1,6 @@
 ![House Rent Prediction Model](banner.png)
 
-# 🏠 House Rent Prediction Model
+#  House Rent Prediction Model
 
 
 A **Data Science project** to predict **house rental prices** based on multiple features such as size, city, furnishing status, and more.  
