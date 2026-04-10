@@ -1,1 +1,717 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>House Rent Predictor · Harshit Saxena</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+  </head>
+  <body>
+    <div class="grid-bg"></div>
 
+    <nav>
+      <div class="nav-logo">House Rent ₹ </div>
+      <button class="menu-btn" id="menu-btn">☰</button>
+      <div class="nav-links" id="nav-links">
+        <a href="#overview">Overview</a>
+        <a href="#models">Models</a>
+        <a href="#predictor">Predictor</a>
+        <a href="#stack">Stack</a>
+      </div>
+    </nav>
+
+    <section id="hero">
+      <div class="hero-glow"></div>
+      <div class="hero-glow2"></div>
+      <div class="hero-inner">
+        <div class="hero-badge"><span></span> Machine Learning Project</div>
+        <h1 class="hero-title">
+          <span class="line1">Predict House Rent</span>
+          <span class="line2">With Precision.</span>
+        </h1>
+        <p class="hero-sub">
+          ML system trained on
+          <strong>100,000 real housing records</strong> across 4 Indian cities —
+          powered by Random Forest &amp; Linear Regression models with
+          <strong>92%+ accuracy</strong>.
+        </p>
+        <div class="hero-cta">
+          <a href="#predictor" class="btn-primary">
+            <svg
+              width="16"
+              height="16"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path d="M12 2L2 7l10 5 10-5-10-5z" />
+              <path d="M2 17l10 5 10-5M2 12l10 5 10-5" />
+            </svg>
+            Try Live Predictor
+          </a>
+          <a
+            href="https://github.com/harshitsaxenavs/House-Rent-Prediction-Model"
+            target="_blank"
+            class="btn-ghost"
+          >
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"
+              />
+            </svg>
+            View on GitHub
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-val">100K</div>
+            <div class="stat-label">Training Records</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-val">4</div>
+            <div class="stat-label">Major Cities</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-val">2</div>
+            <div class="stat-label">ML Models</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section id="overview">
+      <div class="section-tag">Overview</div>
+      <h2 class="section-title fade-in">What This Project Does</h2>
+      <p class="section-sub fade-in">
+        End-to-end machine learning pipeline from raw data to production
+        predictions.
+      </p>
+      <div class="overview-grid">
+        <div class="card fade-in">
+          <div class="card-icon">
+            <svg
+              width="18"
+              height="18"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              viewBox="0 0 24 24"
+            >
+              <ellipse cx="12" cy="5" rx="9" ry="3" />
+              <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
+              <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
+            </svg>
+          </div>
+          <h3>100,000 Real Records</h3>
+          <p>
+            Dataset covers Mumbai, Delhi, Kolkata, and Chennai with verified
+            rental data across diverse property configurations.
+          </p>
+        </div>
+        <div class="card fade-in">
+          <div class="card-icon">
+            <svg
+              width="18"
+              height="18"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"
+              />
+            </svg>
+          </div>
+          <h3>Dual-Model Comparison</h3>
+          <p>
+            Side-by-side evaluation of Random Forest Regressor vs Linear
+            Regression using R&#178; score and RMSE metrics.
+          </p>
+        </div>
+        <div class="card fade-in">
+          <div class="card-icon">
+            <svg
+              width="18"
+              height="18"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              viewBox="0 0 24 24"
+            >
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+            </svg>
+          </div>
+          <h3>Sklearn Pipelines</h3>
+          <p>
+            Full preprocessing pipeline
+            baked into model — zero leakage risk.
+          </p>
+        </div>
+        <div class="card fade-in">
+          <div class="card-icon">
+            <svg
+              width="18"
+              height="18"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              viewBox="0 0 24 24"
+            >
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+            </svg>
+          </div>
+          <h3>Live Predictions</h3>
+          <p>
+            Flask API with joblib model serving — enter any property
+            configuration and get an instant rent estimate.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section id="features">
+      <div class="section-tag">Dataset</div>
+      <h2 class="section-title fade-in">Input Features</h2>
+      <p class="section-sub fade-in">
+        Six features feed the model, covering both property characteristics and
+        location context.
+      </p>
+      <div class="features-layout">
+        <div class="features-list">
+          <div class="feature-item fade-in">
+            <div><div class="feature-badge">Categorical</div></div>
+            <div>
+              <div class="feature-name">City</div>
+              <div class="feature-type">Mumbai · Delhi · Kolkata · Chennai</div>
+            </div>
+          </div>
+          <div class="feature-item fade-in">
+            <div><div class="feature-badge">Numeric</div></div>
+            <div>
+              <div class="feature-name">Area (sqft)</div>
+              <div class="feature-type">Property size in square feet</div>
+            </div>
+          </div>
+          <div class="feature-item fade-in">
+            <div><div class="feature-badge">Numeric</div></div>
+            <div>
+              <div class="feature-name">BHK</div>
+              <div class="feature-type">
+                Number of bedrooms + hall + kitchen
+              </div>
+            </div>
+          </div>
+          <div class="feature-item fade-in">
+            <div><div class="feature-badge">Numeric</div></div>
+            <div>
+              <div class="feature-name">Bathroom</div>
+              <div class="feature-type">Number of bathrooms</div>
+            </div>
+          </div>
+          <div class="feature-item fade-in">
+            <div><div class="feature-badge">Categorical</div></div>
+            <div>
+              <div class="feature-name">Furnishing Status</div>
+              <div class="feature-type">
+                Furnished · Semi-Furnished · Unfurnished
+              </div>
+            </div>
+          </div>
+          <div class="feature-item fade-in">
+            <div><div class="feature-badge">Categorical</div></div>
+            <div>
+              <div class="feature-name">Tenant Preferred</div>
+              <div class="feature-type">Bachelors · Company · Family</div>
+            </div>
+          </div>
+        </div>
+        <div class="dataset-info fade-in">
+          <h4>Dataset Statistics</h4>
+          <div class="info-row">
+            <span class="info-label">Total Rows</span
+            ><span class="info-val">100,000</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Features</span
+            ><span class="info-val">6 input columns</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Target Variable</span
+            ><span class="info-val">Rent (₹/month)</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Train / Test Split</span
+            ><span class="info-val">80% / 20%</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Cities Covered</span
+            ><span class="info-val">4 metros</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Random State</span
+            ><span class="info-val">42</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section id="models">
+      <div class="section-tag">Model Performance</div>
+      <h2 class="section-title fade-in">Evaluation Results</h2>
+      <p class="section-sub fade-in">
+        Trained and evaluated on held-out 20% test set. Random Forest dominates
+        on both metrics.
+      </p>
+      <div class="models-layout">
+        <div class="model-card winner fade-in">
+          <div class="model-name">Random Forest</div>
+
+          <div class="metric-grid">
+            <div class="metric-box">
+              <div class="metric-val good" id="rf-r2">—</div>
+              <div class="metric-label">R² Score</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-val good" id="rf-rmse">—</div>
+              <div class="metric-label">RMSE</div>
+            </div>
+          </div>
+          <div class="progress-section">
+            <div class="progress-label">
+              <span>Accuracy (R²)</span><span id="rf-pct">—</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill" id="rf-bar" style="width: 0%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="model-card fade-in">
+          <div class="model-name">Linear Regression</div>
+
+          <div class="metric-grid">
+            <div class="metric-box">
+              <div class="metric-val ok" id="lr-r2">—</div>
+              <div class="metric-label">R² Score</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-val ok" id="lr-rmse">—</div>
+              <div class="metric-label">RMSE</div>
+            </div>
+          </div>
+          <div class="progress-section">
+            <div class="progress-label">
+              <span>Accuracy (R²)</span><span id="lr-pct">—</span>
+            </div>
+            <div class="progress-track">
+              <div
+                class="progress-fill green"
+                id="lr-bar"
+                style="width: 0%"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section id="predictor">
+      <div class="section-tag">Live Demo</div>
+      <h2 class="section-title fade-in">Rent Predictor</h2>
+      <p class="section-sub fade-in">
+        Real predictions from trained .joblib model files — no simulations.
+      </p>
+      <div class="predictor-wrap">
+        <div class="predictor-info fade-in">
+          <h3>How the prediction works</h3>
+          <p>
+            Enter your property details. The app sends them to a Flask API which
+            loads the saved scikit-learn Pipeline and returns an instant
+            prediction.
+          </p>
+          <div class="flow-steps">
+            <div class="flow-step">
+              <div class="flow-num">01</div>
+              <div class="flow-text">
+                <strong>Data input</strong> — Fill in the 6 property features
+              </div>
+            </div>
+            <div class="flow-step">
+              <div class="flow-num">02</div>
+              <div class="flow-text">
+                <strong>Preprocessing</strong> — OneHotEncoder handles
+                categorical features inside the pipeline
+              </div>
+            </div>
+            <div class="flow-step">
+              <div class="flow-num">03</div>
+              <div class="flow-text">
+                <strong>Inference</strong> — Model loaded from
+                <code
+                  style="
+                    font-family: &quot;Poppins&quot;, sans-serif;
+                    font-size: 0.78rem;
+                    color: var(--accent);
+                  "
+                  >rf_model.joblib</code
+                >
+                or
+                <code
+                  style="
+                    font-family: &quot;Poppins&quot;, sans-serif;
+                    font-size: 0.78rem;
+                    color: var(--green);
+                  "
+                  >lr_model.joblib</code
+                >
+              </div>
+            </div>
+            <div class="flow-step">
+              <div class="flow-num">04</div>
+              <div class="flow-text">
+                <strong>Result</strong> — Predicted monthly rent displayed
+                instantly
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="predictor-form-box fade-in">
+          <div class="form-grid">
+            <div class="form-group">
+              <label>City</label>
+              <select id="city">
+                <option value="Mumbai">Mumbai</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Kolkata">Kolkata</option>
+                <option value="Chennai">Chennai</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Furnishing Status</label>
+              <select id="furnishing">
+                <option value="Furnished">Furnished</option>
+                <option value="Semi-Furnished">Semi-Furnished</option>
+                <option value="Unfurnished">Unfurnished</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Area (sqft)</label>
+              <input
+                type="number"
+                id="area"
+                value="1200"
+                min="100"
+                max="10000"
+                step="10"
+              />
+            </div>
+            <div class="form-group">
+              <label>BHK</label>
+              <input type="number" id="bhk" value="2" min="1" max="10" />
+            </div>
+            <div class="form-group">
+              <label>Bathrooms</label>
+              <input type="number" id="bathroom" value="1" min="1" max="10" />
+            </div>
+            <div class="form-group">
+              <label>Tenant Preferred</label>
+              <select id="tenant">
+                <option value="Family">Family</option>
+                <option value="Bachelors">Bachelors</option>
+                <option value="Company">Company</option>
+              </select>
+            </div>
+            <div class="form-group full">
+              <label>Prediction Model</label>
+              <div class="model-toggle">
+                <button
+                  class="model-btn active"
+                  data-model="Random Forest"
+                  onclick="setModel(this)"
+                >
+                  🌲 Random Forest
+                </button>
+                <button
+                  class="model-btn"
+                  data-model="Linear Regression"
+                  onclick="setModel(this)"
+                >
+                  📈 Linear Regression
+                </button>
+              </div>
+            </div>
+          </div>
+          <button class="predict-btn" id="predict-btn" onclick="predict()">
+            ₹ Predict Monthly Rent
+          </button>
+          <div class="error-box" id="error-box"></div>
+          <div class="result-box" id="result-box">
+            <div class="result-label">Estimated Monthly Rent</div>
+            <div class="result-rent" id="result-rent">—</div>
+            <div class="result-meta">
+              <div class="result-meta-item">
+                <span>Model: </span><strong id="res-model">—</strong>
+              </div>
+              <div class="result-meta-item">
+                <span>R²: </span><strong id="res-r2">—</strong>
+              </div>
+              <div class="result-meta-item">
+                <span>RMSE: </span><strong id="res-rmse">—</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section id="stack">
+      <div class="section-tag">Stack</div>
+      <h2 class="section-title fade-in">Technologies Used</h2>
+      <p class="section-sub fade-in">
+        The full data science and web development toolkit that powers this
+        project.
+      </p>
+      <div class="tech-grid">
+        <div class="tech-chip fade-in">
+          <div class="dot" style="background: #3776ab"></div>
+          Python
+        </div>
+        <div class="tech-chip fade-in">
+          <div class="dot" style="background: #f7931e"></div>
+          Scikit-learn
+        </div>
+        <div class="tech-chip fade-in">
+          <div class="dot" style="background: #150458"></div>
+          Pandas
+        </div>
+        <div class="tech-chip fade-in">
+          <div class="dot" style="background: #4dabcf"></div>
+          NumPy
+        </div>
+        <div class="tech-chip fade-in">
+          <div class="dot" style="background: #ff6b00"></div>
+          Flask
+        </div>
+        <div class="tech-chip fade-in">
+          <div class="dot" style="background: #e44d26"></div>
+          HTML / CSS
+        </div>
+        <div class="tech-chip fade-in">
+          <div class="dot" style="background: #f0db4f"></div>
+          JavaScript
+        </div>
+        <div class="tech-chip fade-in">
+          <div class="dot" style="background: #11557c"></div>
+          Matplotlib
+        </div>
+        <div class="tech-chip fade-in">
+          <div class="dot" style="background: #4c72b0"></div>
+          Seaborn
+        </div>
+        <div class="tech-chip fade-in">
+          <div class="dot" style="background: #ffca28"></div>
+          Jupyter Notebook
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section id="method">
+      <div class="section-tag">Methodology</div>
+      <h2 class="section-title fade-in">Pipeline Architecture</h2>
+      <p class="section-sub fade-in">
+        Six stages from raw CSV to live prediction endpoint.
+      </p>
+      <div class="pipeline fade-in">
+        <div class="pipe-step">
+          <div class="pipe-icon">
+            <svg
+              width="22"
+              height="22"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
+              />
+            </svg>
+          </div>
+          <div class="pipe-title">Data Loading</div>
+          <div class="pipe-sub">100K records<br />CSV ingestion</div>
+        </div>
+        <div class="pipe-arrow">&#8250;</div>
+        <div class="pipe-step">
+          <div class="pipe-icon">
+            <svg
+              width="22"
+              height="22"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              viewBox="0 0 24 24"
+            >
+              <path d="M12 20h9" />
+              <path
+                d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"
+              />
+            </svg>
+          </div>
+          <div class="pipe-title">Preprocessing</div>
+          <div class="pipe-sub">Data Preprocessing</div>
+        </div>
+        <div class="pipe-arrow">&#8250;</div>
+        <div class="pipe-step">
+          <div class="pipe-icon">
+            <svg
+              width="22"
+              height="22"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              viewBox="0 0 24 24"
+            >
+              <rect x="3" y="3" width="7" height="7" />
+              <rect x="14" y="3" width="7" height="7" />
+              <rect x="3" y="14" width="7" height="7" />
+              <rect x="14" y="14" width="7" height="7" />
+            </svg>
+          </div>
+          <div class="pipe-title">Train/Test Split</div>
+          <div class="pipe-sub">80/20 %</div>
+        </div>
+        <div class="pipe-arrow">&#8250;</div>
+        <div class="pipe-step">
+          <div class="pipe-icon">
+            <svg
+              width="22"
+              height="22"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              viewBox="0 0 24 24"
+            >
+              <rect x="2" y="3" width="20" height="14" rx="2" />
+              <path d="M8 21h8M12 17v4" />
+            </svg>
+          </div>
+          <div class="pipe-title">Model Training</div>
+          <div class="pipe-sub">RF · LR<br />Pipeline.fit()</div>
+        </div>
+        <div class="pipe-arrow">&#8250;</div>
+        <div class="pipe-step">
+          <div class="pipe-icon">
+            <svg
+              width="22"
+              height="22"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              viewBox="0 0 24 24"
+            >
+              <line x1="18" y1="20" x2="18" y2="10" />
+              <line x1="12" y1="20" x2="12" y2="4" />
+              <line x1="6" y1="20" x2="6" y2="14" />
+            </svg>
+          </div>
+          <div class="pipe-title">Evaluation</div>
+          <div class="pipe-sub">R&#178; · RMSE<br />Test set</div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-left">
+        <div class="footer-name">Harshit Saxena</div>
+      </div>
+      <div class="footer-links">
+        <a
+          href="https://harshitsaxena.vercel.app/"
+          target="_blank"
+          class="footer-link"
+        >
+          <svg
+            width="14"
+            height="14"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+            ></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+          View Portfolio
+        </a>
+        <a
+          href="https://github.com/harshitsaxenavs"
+          target="_blank"
+          class="footer-link"
+        >
+          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"
+            />
+          </svg>
+          GitHub
+        </a>
+        <a
+          href="https://linkedin.com/in/harshit-saxena-vs"
+          target="_blank"
+          class="footer-link"
+        >
+          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+            />
+          </svg>
+          LinkedIn
+        </a>
+        <a href="mailto:harshitsaxenavs@gmail.com" class="footer-link">
+          <svg
+            width="14"
+            height="14"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+            />
+            <polyline points="22,6 12,13 2,6" />
+          </svg>
+          Email
+        </a>
+      </div>
+    </footer>
+  </body>
+</html>
