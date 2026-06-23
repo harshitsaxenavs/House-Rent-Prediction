@@ -10,7 +10,7 @@ This project covers **data preprocessing**, **exploratory data analysis (EDA)**,
 
 ## 🟢 Live Demo
 
-🔗 **Try it Live:** [Deployed App](house-rent-prediction-model.vercel.app/)  
+🔗 **Try it Live:** [Deployed App](https://house-rent-prediction-model.vercel.app/)  
 📓 **Open in Google Colab:** [Run Notebook](https://colab.research.google.com/drive/15aoRSXB3AYjiAltyMKnInEmvF6sRA2OX#scrollTo=6b8d58a8)
 
 ---
